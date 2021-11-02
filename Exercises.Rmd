@@ -1,0 +1,63 @@
+---
+title: "Exercises"
+output: html_document
+---
+
+Exercise 3.2 From concerts_obo,
+
+Retrieve the 3rd and 5th concert observations and bind the result value with an object name concerts_sampled.
+
+For the second concert, what are its first show’s time and location? Retrieve the information and bind the value with firstShowInfo.
+
+```{r}
+concerts_sampled <- concerts_obo[c(3,5)] 
+
+firstShowInfo <- concerts_obo[[2]][["showInfo"]][[1]][c("time","location")]
+```
+
+
+Exercise 3.3 From concerts_obo, due to Covid-19 the 3rd concert’s 1st show time is changed to “2022/01/31 19:30:00” and the location is changed to “Taichung Opera House”, please change the information
+
+```{r}
+concerts_obo[[3]]$"showInfo"[[1]][c("time","location")] <- list("time" = "2022/01/31 19:30:00","location" = "Taichung Opera House")
+```
+
+
+Exercise 3.4 How do you add the new born if you use JohnsFamilyCopy3$children[3]:
+
+```{r}
+# name: "John"  
+# age: 3
+list(
+  list(
+    name="John",
+    age=3
+    )
+  )
+```
+
+```{r}
+# Therefore, the value of child 3 should follow that same structure
+JohnsFamilyCopy3 <- JohnsFamily
+JohnsFamilyCopy3$children[3] <- 
+  list(
+    list(
+      name="Lisa",
+      age=0
+    )
+  )
+```
+
+Exercise 3.5 The 5th concert decides to add one more show which shares the same show information as its first show except the date is 2 days later.
+
+```{r}
+concerts_obo[[5]]$showInfo[[2]] <- concerts_obo[[5]]$showInfo[[1]]
+concerts_obo[[5]]$showInfo[[2]][c(1, 8)] <- list(time="2021/12/20 10:00:00", endTime="2021/12/21 22:00:00")
+```
+
+
+
+
+
+
+
