@@ -262,3 +262,85 @@ is.na(studentGradesInputFromTA2)
 ```{r}
 anyNA(studentGradesInputFromTA2)
 ```
+
+```{r}
+birthdays > lubridate::ymd("2002-12-31")
+```
+
+```{r}
+birthdays > c(lubridate::ymd("2002-12-31"),
+  lubridate::ymd("2002-12-31"), 
+  lubridate::ymd("2002-12-31"), 
+  lubridate::ymd("2002-12-31"), 
+  lubridate::ymd("2002-12-31"), 
+  lubridate::ymd("2002-12-31"))
+
+birthdays > rep(lubridate::ymd("2002-12-31"), 6)
+```
+
+```{r}
+# long vector
+long_vctr = c("A", "B", "C", "D")
+
+# short vector
+short_vctr = c(1, 2)
+# recycle short_vctr
+short_vctr_recycles = 
+  c(c(1, 2), c(1, 2)) #[1:4]
+short_vctr_recycles
+
+# short vector
+short_vctr2 = c(1, 2, 3) # length 3
+# recycle short_vctr
+short_vctr_recycles2 = 
+  c(c(1, 2, 3), c(1, 2, 3))[1:4]
+short_vctr_recycles2
+```
+
+```{r}
+vc1 = c("Apr.", "May.")
+vc2 = c("1", "1")
+paste(vc1, vc2)
+paste(c("Apr.", "May."), c("1", "1"))
+# use recycling
+paste(c("Apr.", "May."), "1")
+```
+
+```{r}
+rep(1998:2021, 2)
+.years <- as.character(rep(1998:2021, each=2))
+length(.year)
+
+.halfYearDays <- c("01-01", "07-01")
+
+paste(.years, .halfYearDays, sep="-")
+```
+
+## One of them
+
+LHS `%in%`
+
+```{r}
+LHS %in% RHS
+```
+
+```{r}
+# 10 students' majors
+majors <- c('economics','law','economics','sociology','sociology','sociology','sociology','economics','statistics','law')
+# ? who are from the school of social science ?
+
+# define a set of values that the school contain
+set_schoolSocialScience = c("economics", "sociology", "social work")
+
+pickSchoolSocialScience <-
+  majors %in% set_schoolSocialScience
+print(pickSchoolSocialScience
+      )
+which(pickSchoolSocialScience)
+```
+
+```{r}
+"1995" != "1995 " # even space makes a difference
+"economics" != "Economics" # case matters
+"台灣" != "臺灣"
+```
